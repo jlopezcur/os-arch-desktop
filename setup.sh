@@ -34,4 +34,4 @@ dialog --checklist "Select:" 0 0 0 \
   "Browser" "qutebrowser chromium" on \
   "Monitor" "btop kmon procs termshark" on \
   "News" "newsboat" on \
-  "Others" "scrcpy" on \
+  "Others" "scrcpy" on
