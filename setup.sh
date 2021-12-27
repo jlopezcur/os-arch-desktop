@@ -10,7 +10,7 @@ dialog --checklist "Select:" 0 0 0 \
   "Shell" "dash fish fisher zsh byobu" on \
   "Prompt" "starship" on \
   "Terminal Emulator" "alacritty kitty" on \
-  "Languages" "rust tokei" on \
+  "Languages" "tokei" on \
   "Window Manager" "sway polkit-gnome" on \
   "Bar" "waybar" on \
   "Locker" "swaylock" on \

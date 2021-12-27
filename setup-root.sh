@@ -15,7 +15,7 @@ pacman -S \
   dash fish fisher zsh byobu \
   starship \
   alacritty \
-  rust tokei \
+  tokei \
   waybar sway polkit-gnome \
   swayidle swaylock \
   gammastep swaybg \
