@@ -1,3 +1,6 @@
 #!/bin/sh
 
-paru -S gimp inkscape blender
+# install programs
+paru -S \
+  gimp inkscape blender \
+  --noconfirm

@@ -1,37 +1,60 @@
 #!/bin/sh
 
-dialog --msgbox "Kloder awesome installer!" 0 0
+action=0
 
-dialog --checklist "Select:" 0 0 0 \
-  "Kernel" "linux-zen" on \
-  "VCS" "git git-lfs tip" on \
-  "Utils" "opendoas stow fzf ripgrep exa bat" on \
-  "Security" "ufw" on \
-  "Shell" "dash fish fisher zsh byobu" on \
-  "Prompt" "starship" on \
-  "Terminal Emulator" "alacritty kitty" on \
-  "Languages" "tokei" on \
-  "Window Manager" "sway polkit-gnome" on \
-  "Bar" "waybar" on \
-  "Locker" "swaylock" on \
-  "Idle" "swayidle" on \
-  "Ambiance" "gammastep swaybg" on \
-  "Notifications" "mako" on \
-  "Agenda" "calcurse" on \
-  "Record" "wf-recorder slurp grim ffmpeg obs-studio asciinema" on \
-  "Sound" "pipewire libpipewire02 pipewire-alsa pipewire-pulse" on \
-  "Launcher" "wofi bemenu" on \
-  "Fonts" "noto-fonts-emoji" on \
-  "Editor" "neovim" on \
-  "Viewers" "zathura sxiv" on \
-  "Graphics" "inkscape gimp" on \
-  "3D" "blender" on \
-  "Video" "mpv" on \
-  "Mail" "neomutt" on \
-  "Music" "cmus mp3info" on \
-  "Chat" "weechat" on \
-  "Password Manager" "gopass" on \
-  "Browser" "qutebrowser chromium" on \
-  "Monitor" "btop kmon procs termshark" on \
-  "News" "newsboat" on \
-  "Others" "scrcpy" on
+while [ $action -ne 3 ]
+do
+
+  action=$(dialog --stdout --no-tags --menu "Menu:" 0 0 0 \
+    1 "Install required packages" \
+    2 "Install software" \
+    3 "Exit")
+
+  # install required packages
+  if [ $action -eq 1 ]
+  then
+    # ./features/required.sh
+    echo "executing: ./features/required.sh"
+    exit 0
+  fi
+
+  # install software
+  if [ $action -eq 2 ]
+  then
+
+    modules=$(dialog --stdout --no-tags --checklist "Select:" 0 0 0 \
+      "kernel" "Kernel" on \
+      "system" "System" on \
+      "vcs" "VCS" on \
+      "security" "Security" on \
+      "terminal" "Terminal" on \
+      "wm" "Window Manager" on \
+      "fm" "File Manager" on \
+      "agenda" "Agenda" on \
+      "recording" "Recording" on \
+      "editor" "Editor" on \
+      "viewers" "Viewers" on \
+      "design" "Design" on \
+      "mail" "Mail" on \
+      "music" "Music" on \
+      "chat" "Chat" on \
+      "browsers" "Browsers" on \
+      "node" "Node" on \
+      "rust" "Rust" on \
+      "utils" "Utils" on \
+      "others" "Others" on)
+
+    # install features
+    readarray -d " " -t mods<<<"$modules"
+    for mod in "${mods[@]}"
+    do
+      echo "executing: ./features/$mod.sh"
+    done
+    exit 0
+
+  fi
+
+done
+
+
+clear

@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# deno
+# firewall
 paru -S \
-  deno \
+  ufw \
+  gopass \
   --noconfirm
