@@ -2,5 +2,5 @@
 
 # install prefered kernel
 paru -S \
-  kernel-zen \
+  linux-zen \
   --noconfirm

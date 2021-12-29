@@ -12,9 +12,8 @@ sudo pacman -S --needed base-devel --noconfirm
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
-exit
 cd ..
-# rm -rf paru ???
+rm -rf paru
 
 # vcs
-sudo pacman -S git --noconfirm
+paru -S git openssh --noconfirm
